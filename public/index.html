@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2a1a11" />
+  <meta name="description" content="BANG! Online tiếng Việt - lập phòng và chơi cùng bạn bè." />
+  <title>BANG! Online — Thị trấn Viễn Tây</title>
+  <style>
+    :root{--ink:#2b1a10;--wood:#4a2c1b;--wood2:#765033;--gold:#c79d58;--paper:#ead8b0;--paper2:#f6e9cb;--red:#8b3025;--green:#4c603d}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:radial-gradient(ellipse at top,#604126 0,#24160f 65%);min-height:100vh}
+    button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
+    .wrap{max-width:1120px;margin:auto;padding:22px 16px 34px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;color:#f5e7c8;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:13px}.badge{display:grid;place-items:center;width:56px;height:56px;border:2px solid var(--gold);border-radius:12px;background:#69452c;font-size:29px}.brand h1{margin:0;font-size:clamp(28px,5vw,42px);letter-spacing:3px}.brand p{margin:4px 0 0;font:11px Arial,sans-serif;letter-spacing:3px;color:#cdb083;text-transform:uppercase}
+    .connection{font:12px Arial,sans-serif;border:1px solid #8b6844;background:#302016;border-radius:30px;padding:9px 12px;white-space:nowrap}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#bd4639;margin-right:7px}.dot.on{background:#72b55d}
+    .wood{background:linear-gradient(135deg,#795234,#452a1a 50%,#63412a);border:2px solid #bd914d;box-shadow:0 10px 26px #100a06aa,inset 0 1px #ffffff1a;border-radius:16px;color:#fff0d1;padding:clamp(18px,4vw,30px)}
+    .paper{background:radial-gradient(ellipse at 15% 5%,#fff7df,transparent 55%),repeating-linear-gradient(0deg,#6c421007 0 1px,transparent 1px 5px),var(--paper);border:4px solid #805631;border-radius:15px;padding:20px;box-shadow:0 10px 24px #100a0640}
+    .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}.eyebrow{font: bold 11px Arial,sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:#d5b67f}.hero h2{font-size:clamp(30px,5vw,48px);line-height:1.04;margin:13px 0}.hero p{font:14px/1.65 Arial,sans-serif;color:#e4caa3;max-width:470px}
+    label{display:block;font:bold 13px Arial,sans-serif;margin:18px 0 8px}.input{width:100%;padding:12px;border-radius:7px;border:1px solid #ae8957;background:#fff8e5;color:#2b1a10;outline:none}.input:focus{box-shadow:0 0 0 3px #c79d5833;border-color:#805631}.codeinput{text-align:center;font: bold 23px monospace;letter-spacing:7px;text-transform:uppercase}
+    .btn{border:1px solid var(--gold);border-radius:8px;padding:12px 15px;font-weight:bold;display:flex;align-items:center;justify-content:center;gap:9px;transition:filter .15s;min-height:44px}.btn:hover:not(:disabled){filter:brightness(1.12)}.primary{background:linear-gradient(#865a34,#58371f);color:#fff0d1}.secondary{background:#ead8b0;color:#3c2516;border-color:#b58a4d}.line{display:flex;align-items:center;gap:12px;margin:18px 0;color:#d3b27a;font:11px Arial,sans-serif;letter-spacing:2px}.line:before,.line:after{content:"";height:1px;background:#c49b5b77;flex:1}
+    .features{display:grid;gap:18px;margin-top:20px}.feature{display:flex;gap:12px}.featureicon{width:40px;height:40px;display:grid;place-items:center;border:1px solid #b69a6c;background:#dfc99d;border-radius:8px;font-size:20px;flex-shrink:0}.feature h3{margin:1px 0 5px;font-size:16px}.feature p{margin:0;font:13px/1.5 Arial,sans-serif;color:#74573a}.quote{border-top:1px solid #b69a6c;margin-top:20px;padding-top:17px;font-size:18px;font-weight:bold}
+    .notice{margin-bottom:16px;border:1px solid #a98b5b;border-radius:8px;padding:12px 14px;font:13px/1.5 Arial,sans-serif;background:#352319;color:#fff0d1}.notice.error{background:#501f19;color:#ffe4df;border-color:#a84c3e}.notice.success{background:#23351e;color:#e5f5dc;border-color:#65834f}
+    .roomhead{display:flex;justify-content:space-between;align-items:start;gap:14px;flex-wrap:wrap}.roomhead h2{font-size:32px;margin:8px 0}.roomhead p{font:13px Arial,sans-serif;color:#e4caa3}.share{margin-top:20px;display:grid;grid-template-columns:1fr auto;gap:10px}.sharebox{border:1px solid #c49a59;background:#2d1b12aa;border-radius:8px;padding:13px}.sharebox small{display:block;font: bold 10px Arial,sans-serif;letter-spacing:1.5px;color:#d5b67f}.roomcode{font:bold 31px monospace;letter-spacing:7px;margin-top:7px;display:block}
+    .roomgrid{display:grid;grid-template-columns:1fr 300px;gap:18px;margin-top:18px}.sectiontitle{font-size:19px;margin:0 0 15px;display:flex;align-items:center;gap:9px}.sectiontitle:before{content:"";width:4px;height:20px;background:#c79d58;border-radius:4px}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px}.count{font:bold 11px Arial,sans-serif;background:#ddc69a;border:1px solid #b69a6c;padding:7px 10px;border-radius:20px;white-space:nowrap}
+    .players{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.player{display:flex;align-items:center;gap:10px;background:#fff4d4a8;border:1px solid #b69a6c;border-radius:9px;padding:11px;min-width:0}.avatar{width:43px;height:43px;flex-shrink:0;border:2px solid #c49a59;border-radius:50%;display:grid;place-items:center;color:#fff0cf;font-size:21px;background:#8b3025}.avatar.bot{background:#526344}.pinfo{min-width:0;flex:1}.pname{font:bold 13px Arial,sans-serif;overflow-wrap:anywhere}.tag{font: bold 9px Arial,sans-serif;border:1px solid #a77b3d;background:#e7d2a5;border-radius:3px;padding:3px 5px;display:inline-block;margin-top:4px}.pstatus{font:11px Arial,sans-serif;color:#75583a;margin-top:5px}.empty{border:1px dashed #b69a6c;background:#e3d0a844;border-radius:9px;padding:11px;display:flex;align-items:center;gap:10px;color:#927957;font:12px Arial,sans-serif}
+    .info{font:12px/1.55 Arial,sans-serif;color:#735537;background:#dfc99d99;border:1px solid #b69a6c;border-radius:8px;padding:11px;margin-top:16px}.sidebox{background:#dfc99d99;border:1px solid #b69a6c;border-radius:8px;padding:12px;margin-bottom:12px;font:12px/1.55 Arial,sans-serif}.sidebox strong{font-size:13px}.sidebox p{margin:5px 0 0;color:#735537}.logs{display:grid;gap:10px}.log{font:12px/1.5 Arial,sans-serif;color:#75583a;display:flex;gap:8px}.log:before{content:"";width:6px;height:6px;background:#8d5c2f;border-radius:50%;margin-top:5px;flex-shrink:0}
+    .gamegrid{display:grid;grid-template-columns:1fr 300px;gap:18px;margin-top:18px}.stats{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.stat{background:#dfc99d;border:1px solid #b69a6c;border-radius:7px;padding:8px 10px;font:bold 12px Arial,sans-serif}.hand{display:flex;gap:10px;flex-wrap:wrap}.card{background:#f8edcf;color:#332114;border:2px solid #b18a52;border-radius:9px;width:128px;min-height:160px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 9px #24150e33}.card h4{font-size:19px;margin:5px 0}.card p{font:11px/1.4 Arial,sans-serif;color:#6f5235}.card .btn{font-size:11px;padding:8px 5px;min-height:34px}.targetselect{width:100%;margin:9px 0;padding:9px;border:1px solid #b69a6c;border-radius:6px;background:#fff4d4}details{border:1px solid #b69a6c;border-radius:8px;padding:12px;margin:10px 0;background:#dfc99d66}summary{cursor:pointer;font:14px Arial,sans-serif;padding:4px}.small{font:12px/1.5 Arial,sans-serif}.role{font-weight:bold;color:#8b3025}.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #6e4b30;margin-top:28px;padding-top:15px;color:#b99a70;font:11px Arial,sans-serif}
+    @media(max-width:760px){.grid,.roomgrid,.gamegrid{grid-template-columns:1fr}.grid .paper{order:2}.players{grid-template-columns:1fr}.share{grid-template-columns:1fr}.sharebox{text-align:center}.roomcode{font-size:29px}.top{align-items:flex-start}.connection{font-size:0}.connection .dot{margin:0}.card{width:calc(50% - 5px);min-width:115px;flex:1}.wrap{padding:15px 11px 25px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="badge">♠</div><div><h1>BANG!</h1><p>Thị trấn Viễn Tây</p></div></div>
+    <div class="connection"><span id="dot" class="dot"></span><span id="connText">Đang kết nối...</span></div>
+  </header>
+  <div id="notice" class="notice" hidden></div>
+  <main id="app"></main>
+  <footer class="footer"><strong>BANG! — THỊ TRẤN VIỄN TÂY</strong><span id="footerStatus">Đang kết nối máy chủ</span></footer>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+(() => {
+  const socket = io({ reconnection: true, reconnectionAttempts: 8, timeout: 12000 });
+  const $ = id => document.getElementById(id);
+  const app = $("app");
+  let connected = false, room = null, playerId = null, privateState = null;
+  let busy = false, noticeTimer = null, localName = "";
+  const params = new URLSearchParams(location.search);
+  const initialCode = (params.get("room") || "").toUpperCase().slice(0,6);
+  const escapeHtml = s => String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function notice(message, type="info") {
+    const el=$("notice"); el.textContent=message; el.className="notice "+type; el.hidden=false;
+    clearTimeout(noticeTimer); noticeTimer=setTimeout(()=>el.hidden=true,6500);
+  }
+  function setConnection(on) {
+    connected=on; $("dot").className="dot"+(on?" on":"");
+    $("connText").textContent=on?"Đã kết nối":"Mất kết nối";
+    $("footerStatus").textContent=on?"Đường truyền hoạt động":"Đang chờ kết nối";
+    if(on && room) requestSync();
+  }
+  function requestSync() {
+    if(!room) return;
+    // Bản thử nghiệm thông báo nếu kết nối lại; không tự khôi phục phiên sau khi máy chủ mất trạng thái.
+  }
+  function emit(event,payload={},done) {
+    if(!connected){notice("Chưa kết nối được máy chủ.","error");return;}
+    busy=true; render();
+    socket.timeout(9000).emit(event,payload,(err,result)=>{
+      busy=false;
+      if(err){notice("Máy chủ phản hồi chậm. Hãy thử lại.","error");render();return;}
+      if(!result?.ok){notice(result?.message||"Không thể thực hiện yêu cầu.","error");render();return;}
+      if(done) done(result);
+      render();
+    });
+  }
+  function validateName() {
+    const field=$("playerName"); const name=(field?.value||localName).trim().replace(/\s+/g," ");
+    if(name.length<2||name.length>20){notice("Tên phải từ 2 đến 20 ký tự.","error");return null;}
+    localName=name;return name;
+  }
+  function createRoom() {
+    const name=validateName(); if(!name)return;
+    emit("room:create",{name},res=>{
+      room=res.room;playerId=res.playerId;privateState=null;
+      history.replaceState({}, "", "/?room="+room.code);
+      notice("Đã tạo phòng "+room.code+". Gửi mã này cho bạn bè!","success");render();
+    });
+  }
+  function joinRoom() {
+    const name=validateName(); if(!name)return;
+    const code=($("roomCode")?.value||initialCode).trim().toUpperCase();
+    if(!/^[A-HJ-NP-Z2-9]{6}$/.test(code)){notice("Mã phòng phải gồm 6 ký tự hợp lệ.","error");return;}
+    emit("room:join",{name,code},res=>{
+      room=res.room;playerId=res.playerId;privateState=null;
+      history.replaceState({}, "", "/?room="+room.code);
+      notice("Đã vào phòng "+room.code+".","success");render();
+    });
+  }
+  function addBot(){emit("room:addBot",{},()=>notice("Đã thêm cao bồi máy.","success"));}
+  function startGame(){emit("game:start",{},()=>notice("Ván chơi bắt đầu! Chúc may mắn, cao bồi.","success"));}
+  function leaveRoom(){
+    emit("room:leave",{},()=>{room=null;playerId=null;privateState=null;history.replaceState({}, "", "/");notice("Bạn đã rời phòng.","success");render();});
+  }
+  function copyCode(){
+    if(!room)return;
+    const url=location.origin+"/?room="+room.code;
+    if(navigator.clipboard?.writeText) navigator.clipboard.writeText(url).then(()=>notice("Đã sao chép đường dẫn mời bạn bè.","success")).catch(()=>prompt("Sao chép đường dẫn này:",url));
+    else prompt("Sao chép đường dẫn này:",url);
+  }
+  function playerName(id){return room?.players.find(p=>p.id===id)?.name||"Người chơi";}
+  function playCard(cardId,targetId){
+    emit("game:play",{cardId,targetId},()=>{notice("Đã sử dụng lá bài.","success");});
+  }
+  function gameAction(event){emit(event,{},()=>{});}
+  function renderLobby() {
+    const count=room.players.length, host=room.hostId===socket.id;
+    const alive=room.players.filter(p=>p.alive);
+    const playerCards=room.players.map((p,i)=>`<div class="player"><div class="avatar ${p.isBot?'bot':''}">${p.isBot?'♟':'🤠'}</div><div class="pinfo"><div class="pname">${escapeHtml(p.name)} ${p.id===playerId?'<span class="tag">BẠN</span>':''}</div>${p.isHost?'<span class="tag">CHỦ PHÒNG</span>':''}<div class="pstatus">${p.isBot?'Cao bồi máy':p.connected?'● Đang kết nối':'● Mất kết nối'}</div></div><b>${String(i+1).padStart(2,'0')}</b></div>`).join("");
+    const empties=Array.from({length:Math.max(0,7-count)},()=>`<div class="empty"><div class="avatar" style="background:transparent;color:#927957;border-style:dashed">＋</div><span><b>Chỗ trống</b><br>Đang chờ cao bồi...</span></div>`).join("");
+    app.innerHTML=`
+      <section class="wood">
+        <div class="roomhead"><div><div class="eyebrow">Điểm hẹn của các tay súng</div><h2>Phòng chờ</h2><p>Rủ bạn bè tham gia trước khi mở màn cuộc đấu.</p></div><button class="btn primary" id="leaveBtn">↩ Rời phòng</button></div>
+        <div class="share"><div class="sharebox"><small>MÃ PHÒNG — GỬI CHO BẠN BÈ</small><span class="roomcode">${room.code}</span></div><button class="btn primary" id="copyBtn">🔗 Sao chép đường dẫn</button></div>
+      </section>
+      <div class="roomgrid">
+        <section class="paper"><div class="sectionhead"><h2 class="sectiontitle">Danh sách cao bồi</h2><span class="count">${count}/7 NGƯỜI</span></div><div class="players">${playerCards}${empties}</div><div class="info">${count<4?`Cần thêm ${4-count} người chơi hoặc Bot để bắt đầu ván.`:"Đã đủ số người tối thiểu để bắt đầu ván."}</div></section>
+        <aside>
+          <section class="paper" style="margin-bottom:16px"><h2 class="sectiontitle">Quản lý phòng</h2><div class="sidebox"><strong>${host?'♜ Bạn là chủ phòng':'♟ Bạn là khách'}</strong><p>${host?'Bạn có thể thêm Bot hoặc bắt đầu ván khi đủ 4–7 vị trí.':'Chờ chủ phòng bắt đầu ván nhé.'}</p></div>
+            ${host?`<button class="btn primary" id="botBtn" style="width:100%;margin-bottom:9px" ${count>=7||busy?'disabled':''}>♟ Thêm cao bồi máy</button><button class="btn secondary" id="startBtn" style="width:100%" ${count<4||count>7||busy?'disabled':''}>⚔ Bắt đầu ván</button>`:`<div class="info">Chủ phòng sẽ bắt đầu khi mọi người sẵn sàng.</div>`}
+          </section>
+          <section class="paper"><h2 class="sectiontitle">Nhật ký thị trấn</h2><div class="logs">${(room.log||[]).slice(0,8).map(l=>`<div class="log"><span><b>${escapeHtml(l.time)}</b> — ${escapeHtml(l.text)}</span></div>`).join("")||'<div class="log">Chưa có hoạt động.</div>'}</div></section>
+        </aside>
+      </div>`;
+    $("leaveBtn").onclick=leaveRoom;$("copyBtn").onclick=copyCode;
+    if($("botBtn"))$("botBtn").onclick=addBot;if($("startBtn"))$("startBtn").onclick=startGame;
+  }
+  function renderGame() {
+    const me=room.players.find(p=>p.id===playerId);
+    const myTurn=privateState?.isMyTurn;
+    const pending=privateState?.pendingAttack;
+    const hand=privateState?.hand||[];
+    const targets=room.players.filter(p=>p.alive&&p.id!==playerId);
+    const targetOptions=targets.map(p=>`<option value="${p.id}">${escapeHtml(p.name)} — ${p.hp}/${p.maxHp} máu</option>`).join("");
+    const targetCards=['BANG!','HỤT!','CƯỚP!','PANIC!','ĐẤU SÚNG','NHÀ GẠM'];
+    const cards=hand.map(c=>`<div class="card"><div><small>${c.type==='blue'?'TRANG BỊ':'DÙNG NGAY'}</small><h4>${escapeHtml(c.name)}</h4><p>${escapeHtml(c.text)}</p></div><div>${targetCards.includes(c.name)?`<select class="targetselect" id="target-${c.id}">${targetOptions}</select>`:''}<button class="btn secondary" data-card="${c.id}" style="width:100%" ${!myTurn||pending||(c.name==='HỤT!'&&privateState?.character?.id!=='calamity')?'disabled':''}>Dùng bài</button></div></div>`).join("");
+    const playerList=room.players.map((p,i)=>`<div class="player" style="${p.alive?'':'opacity:.5'}"><div class="avatar ${p.isBot?'bot':''}">${p.isBot?'♟':'🤠'}</div><div class="pinfo"><div class="pname">${escapeHtml(p.name)} ${p.id===playerId?'<span class="tag">BẠN</span>':''}</div><div class="pstatus">${p.role==='Cảnh sát trưởng'?'<b class="role">CẢNH SÁT TRƯỞNG</b>':'Vai trò bí mật'} · ${p.hp}/${p.maxHp} máu · ${p.handCount} lá${p.character?' · '+escapeHtml(p.character):''}</div></div></div>`).join("");
+    const log=(room.log||[]).slice(0,12).map(l=>`<div class="log"><span><b>${escapeHtml(l.time)}</b> — ${escapeHtml(l.text)}</span></div>`).join("");
+    app.innerHTML=`
+      <section class="wood"><div class="roomhead"><div><div class="eyebrow">Mã phòng ${room.code}</div><h2>${room.status==='finished'?'Ván chơi kết thúc': 'Cuộc đấu đã bắt đầu'}</h2><p>${room.status==='finished'?`Người chiến thắng: ${escapeHtml(room.winner)}`:myTurn?'Đến lượt bạn — hãy cân nhắc từng lá bài.':pending?'Có người đang bị tấn công.':'Đang chờ lượt của người chơi khác.'}</p></div><button class="btn primary" id="leaveBtn">↩ Rời phòng</button></div>
+        ${pending?`<div class="info" style="background:#4b281b;color:#fff0d1;border-color:#c79d58;margin-top:15px">${pending.targetId===playerId?'Bạn đang bị BANG! tấn công! Hãy né bằng HỤT! hoặc chịu mất 1 máu.':`${escapeHtml(playerName(pending.attackerId))} đang tấn công ${escapeHtml(playerName(pending.targetId))}.`}</div>`:''}
+      </section>
+      <div class="gamegrid"><section class="paper"><h2 class="sectiontitle">Bài trên tay bạn</h2><div class="stats"><span class="stat">🤠 ${escapeHtml(me?.name||'Bạn')}</span><span class="stat">♥ ${me?.hp||0}/${me?.maxHp||0} máu</span><span class="stat">🃏 ${hand.length} lá bài</span><span class="stat">${myTurn?'● Đến lượt bạn':'○ Chưa đến lượt'}</span></div><div class="info"><b>Nhân vật:</b> ${escapeHtml(privateState?.character?.name||me?.character||'Chưa xác định')} — ${escapeHtml(privateState?.character?.skill||me?.skill||'')}</div>${privateState?.canSid?'<button class="btn secondary" id="sidBtn" style="margin:10px 0">Bỏ 2 lá để hồi 1 máu (Sid Ketchum)</button>':''}<div class="info"><b>Trang bị:</b> ${me?.equipment?.length?me.equipment.map(e=>escapeHtml(e.name)).join(' · '):'Chưa có'} </div>
+        ${pending&&pending.targetId===playerId?`<div class="info" style="margin:12px 0">${pending.kind==='indians'?'ẤN ĐỘ!: dùng BANG! để chống trả hoặc chịu 1 sát thương.':pending.kind==='duel'?'ĐẤU SÚNG: dùng BANG! để đáp trả hoặc chịu sát thương.':'Bị tấn công: dùng HỤT! để né hoặc chịu 1 sát thương.'}</div><div style="display:flex;gap:9px;flex-wrap:wrap;margin:12px 0"><button class="btn primary" id="dodgeBtn" ${!(pending.kind==='indians'||pending.kind==='duel'?hand.some(c=>c.name==='BANG!'):hand.some(c=>c.name==='HỤT!')||hand.some(c=>c.name==='BANG!'&&privateState?.character?.id==='calamity'))?'disabled':''}>${pending.kind==='indians'||pending.kind==='duel'?'Dùng BANG! để đáp trả':'Dùng HỤT! để né'}</button><button class="btn secondary" id="hitBtn">Chịu sát thương</button></div>`:''}
+        <div class="hand">${cards||'<div class="info">Bạn chưa có bài trên tay.</div>'}</div>
+        <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:20px"><button class="btn primary" id="endTurnBtn" ${!myTurn||pending||room.status==='finished'?'disabled':''}>Kết thúc lượt →</button><button class="btn secondary" id="copyBtn">Chia sẻ phòng</button></div>
+        <div class="info"><b>Nhắc luật:</b> đầu lượt rút 2 lá; cuối lượt số lá trên tay không vượt quá máu hiện tại. Trang bị xanh nằm trước mặt bạn. Đây là bản cộng đồng, một số hiệu ứng phức tạp có thể còn đơn giản hóa.</div>
+      </section><aside><section class="paper" style="margin-bottom:16px"><h2 class="sectiontitle">Người chơi</h2><div class="players" style="grid-template-columns:1fr">${playerList}</div></section><section class="paper"><h2 class="sectiontitle">Nhật ký cuộc đấu</h2><div class="logs">${log}</div></section></aside></div>
+      <section class="paper" style="margin-top:18px"><h2 class="sectiontitle">Cẩm nang luật & kỹ năng tiếng Việt</h2>
+        <details><summary><b>16 nhân vật và kỹ năng</b></summary><div class="features">
+          <div class="feature"><div><h3>Bart Cassidy</h3><p>Mỗi lần mất máu, rút 1 lá bài.</p></div></div><div class="feature"><div><h3>Black Jack</h3><p>Lá thứ hai khi rút đầu lượt được lật; nếu là Cơ hoặc Rô thì rút thêm 1 lá.</p></div></div><div class="feature"><div><h3>Calamity Janet</h3><p>Có thể dùng BANG! như HỤT! và HỤT! như BANG! (lá dùng tấn công vẫn phải tuân thủ tầm bắn).</p></div></div><div class="feature"><div><h3>El Gringo</h3><p>Khi mất máu do người chơi khác, lấy ngẫu nhiên 1 lá trên tay người đó nếu họ có.</p></div></div><div class="feature"><div><h3>Jesse Jones</h3><p>Ở lần rút đầu lượt, có thể lấy 1 lá ngẫu nhiên trên tay người khác thay cho lá đầu tiên.</p></div></div><div class="feature"><div><h3>Jourdonnais</h3><p>Khi bị BANG!, được xem như có Thùng: lật lá Cơ thì né.</p></div></div><div class="feature"><div><h3>Kit Carlson</h3><p>Đầu lượt xem 3 lá trên cùng, giữ 2 lá và đặt lá còn lại xuống đáy bộ bài.</p></div></div><div class="feature"><div><h3>Lucky Duke</h3><p>Mỗi lần lật lá, lật 2 lá và chọn kết quả có lợi hơn.</p></div></div><div class="feature"><div><h3>Paul Regret</h3><p>Khoảng cách của người khác tới Paul tăng 1.</p></div></div><div class="feature"><div><h3>Pedro Ramirez</h3><p>Ở lần rút đầu lượt, có thể lấy lá trên cùng của chồng bài bỏ thay cho lá đầu tiên.</p></div></div><div class="feature"><div><h3>Rose Doolan</h3><p>Khoảng cách từ Rose tới người khác giảm 1.</p></div></div><div class="feature"><div><h3>Sid Ketchum</h3><p>Bỏ 2 lá trên tay bất kỳ lúc nào để hồi 1 máu; dùng nút riêng khi có thể.</p></div></div><div class="feature"><div><h3>Slab the Killer</h3><p>Đối thủ cần 2 lá HỤT! để né BANG! của Slab.</p></div></div><div class="feature"><div><h3>Suzy Lafayette</h3><p>Khi không còn lá trên tay, rút ngay 1 lá.</p></div></div><div class="feature"><div><h3>Vulture Sam</h3><p>Khi người chơi bị loại, nhận các lá trên tay và trang bị của những người chơi còn sống trong bản hiện tại.</p></div></div><div class="feature"><div><h3>Willy the Kid</h3><p>Có thể dùng nhiều lá BANG! trong cùng lượt.</p></div></div>
+        </div></details>
+        <details><summary><b>Các lá bài và cách dùng</b></summary><div class="features">
+          <div class="feature"><div><h3>BANG!</h3><p>Tấn công một người trong tầm bắn; họ dùng HỤT! hoặc mất 1 máu. Mặc định mỗi lượt một lần, trừ Willy hoặc Volcanic.</p></div></div><div class="feature"><div><h3>HỤT!</h3><p>Né BANG!; Calamity Janet có thể dùng như BANG!.</p></div></div><div class="feature"><div><h3>BIA</h3><p>Hồi 1 máu, không vượt máu tối đa. Có thể tự cứu mình khi máu về 0.</p></div></div><div class="feature"><div><h3>PANIC!</h3><p>Lấy 1 lá từ người cách 1 khoảng cách, trên tay hoặc trang bị.</p></div></div><div class="feature"><div><h3>CƯỚP!</h3><p>Lấy 1 lá trên tay hoặc trang bị của người chơi khác ở bất kỳ khoảng cách nào.</p></div></div><div class="feature"><div><h3>XE NGỰA / XE CHỞ HÀNG</h3><p>Rút lần lượt 2 hoặc 3 lá bài.</p></div></div><div class="feature"><div><h3>GATLING</h3><p>Mọi người chơi khác phải né bằng HỤT! hoặc mất 1 máu.</p></div></div><div class="feature"><div><h3>ẤN ĐỘ!</h3><p>Mọi người chơi khác phải bỏ BANG! hoặc mất 1 máu.</p></div></div><div class="feature"><div><h3>ĐẤU SÚNG</h3><p>Hai người thay phiên bỏ BANG!; người đầu tiên không thể đáp trả mất 1 máu.</p></div></div><div class="feature"><div><h3>CHỢ CHUNG</h3><p>Lật bài cho mọi người chọn. Bản hiện tại tự phân phối theo thứ tự, chưa có chọn thủ công.</p></div></div><div class="feature"><div><h3>TỬU QUÁN</h3><p>Tất cả người còn sống hồi 1 máu.</p></div></div><div class="feature"><div><h3>NHÀ GẠM</h3><p>Đặt trước mặt người khác trừ Cảnh sát trưởng; đầu lượt lật Cơ thì thoát, không thì mất lượt.</p></div></div><div class="feature"><div><h3>THUỐC NỔ</h3><p>Đầu lượt lật Bích từ 2–9 thì nổ gây 3 máu; nếu không, chuyển cho người kế tiếp.</p></div></div><div class="feature"><div><h3>THÙNG</h3><p>Khi bị BANG!, lật Cơ thì né.</p></div></div><div class="feature"><div><h3>MUSTANG / ỐNG NHÒM</h3><p>MUSTANG làm người khác nhìn bạn xa hơn 1; ỐNG NHÒM giúp bạn nhìn người khác gần hơn 1.</p></div></div><div class="feature"><div><h3>Vũ khí</h3><p>VOLCANIC tầm 1 và cho dùng BANG! không giới hạn; SCHOFIELD tầm 2; REMINGTON tầm 3; CARABINE tầm 4; WINCHESTER tầm 5.</p></div></div>
+        </div></details>
+        <div class="info">Lưu ý minh bạch: đây là bản cộng đồng tự triển khai cơ chế dựa trên bộ cơ bản, không phải bản chính thức. Một số hiệu ứng phức tạp và trình tự chọn bài (đặc biệt CHỢ CHUNG, cứu người khi hấp hối, và một số tương tác đặc biệt) còn được đơn giản hóa; hãy thử với nhóm trước khi dùng như luật thi đấu.</div>
+      </section>`;
+    $("leaveBtn").onclick=leaveRoom;$("copyBtn").onclick=copyCode;
+    if($("endTurnBtn"))$("endTurnBtn").onclick=()=>gameAction("game:endTurn");
+    if($("dodgeBtn"))$("dodgeBtn").onclick=()=>gameAction("game:dodge");
+    if($("hitBtn"))$("hitBtn").onclick=()=>gameAction("game:takeHit");
+    document.querySelectorAll("[data-card]").forEach(btn=>btn.onclick=()=>{
+      const id=btn.dataset.card;const card=hand.find(c=>c.id===id);let targetId=null;
+      if(card&&['BANG!','HỤT!','CƯỚP!','PANIC!','ĐẤU SÚNG','NHÀ GẠM'].includes(card.name))targetId=$("target-"+id)?.value;
+      playCard(id,targetId);
+    });
+  }
+  function render() {
+    if(room){room.status==="waiting"?renderLobby():renderGame();return;}
+    app.innerHTML=`
+      <div class="grid">
+        <section class="wood hero"><div class="eyebrow">Miền đất không khoan nhượng</div><h2>Đã đến lúc<br>rút súng!</h2><p>Tập hợp bạn bè, lập bàn chơi và xem ai sẽ là người sống sót cuối cùng tại thị trấn.</p>
+          <label for="playerName">Tên cao bồi của bạn</label><input class="input" id="playerName" maxlength="20" placeholder="Ví dụ: Tay Súng Miền Tây" value="${escapeHtml(localName)}" autocomplete="nickname">
+          <button class="btn primary" id="createBtn" style="width:100%;margin-top:12px" ${busy||!connected?'disabled':''}>🚪 Tạo phòng mới</button>
+          <div class="line">HOẶC VÀO PHÒNG BẠN BÈ</div>
+          <label for="roomCode">Mã phòng gồm 6 ký tự</label><input class="input codeinput" id="roomCode" maxlength="6" placeholder="ABC234" value="${escapeHtml(initialCode)}" autocomplete="off">
+          <button class="btn secondary" id="joinBtn" style="width:100%;margin-top:10px" ${busy||!connected?'disabled':''}>Vào phòng chơi →</button>
+        </section>
+        <section class="paper"><h2 class="sectiontitle">Luật thị trấn</h2><div class="features">
+          <div class="feature"><div class="featureicon">♟</div><div><h3>4 đến 7 người chơi</h3><p>Mời bạn bè hoặc để chủ phòng thêm cao bồi máy.</p></div></div>
+          <div class="feature"><div class="featureicon">♜</div><div><h3>Vai trò bí mật</h3><p>Cảnh sát trưởng lộ diện; các vai trò khác được giữ riêng.</p></div></div>
+          <div class="feature"><div class="featureicon">⚡</div><div><h3>Chơi trực tuyến</h3><p>Phòng và lượt chơi đồng bộ qua kết nối thời gian thực.</p></div></div>
+        </div><div class="quote">“Thị trấn chỉ đủ chỗ cho những tay súng nhanh nhất.”</div><p class="small" style="color:#76583a">Bản thử nghiệm cộng đồng, chưa phải phiên bản chính thức của trò chơi.</p></section>
+      </div>`;
+    $("createBtn").onclick=createRoom;$("joinBtn").onclick=joinRoom;
+    $("playerName").addEventListener("keydown",e=>{if(e.key==="Enter")createRoom()});
+    $("roomCode").addEventListener("keydown",e=>{if(e.key==="Enter")joinRoom()});
+    $("roomCode").addEventListener("input",e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-HJ-NP-Z2-9]/g,"").slice(0,6)});
+  }
+  socket.on("connect",()=>{setConnection(true);render();});
+  socket.on("disconnect",()=>{setConnection(false);notice("Mất kết nối. Đang thử kết nối lại...","error");});
+  socket.on("connect_error",()=>{setConnection(false);notice("Không kết nối được máy chủ. Nếu mới mở trang, hãy chờ máy chủ khởi động rồi tải lại.","error");});
+  socket.on("room:update",updated=>{room=updated;render();});
+  socket.on("game:private",data=>{if(data.playerId===playerId){privateState=data;render();}});
+  socket.on("room:notice",data=>notice(data.message||"Thông báo từ máy chủ."));
+  render();
+})();
+</script>
+</body>
+</html>
